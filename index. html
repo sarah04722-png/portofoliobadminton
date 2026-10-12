@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOH NAKULA - Badminton Athlete Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Montserrat & Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;0,900;1,900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            black: '#0b0f19',
+                            dark: '#111827',
+                            card: '#1f2937',
+                            neon: '#ccff00',
+                            neonDark: '#a3cc00',
+                            red: '#ff2e4c',
+                            cyan: '#00f0ff'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Montserrat', 'sans-serif',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0b0f19;
+            color: #f3f4f6;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        .text-glow {
+            text-shadow: 0 0 15px rgba(204, 255, 0, 0.5);
+        }
+        .text-glow-red {
+            text-shadow: 0 0 15px rgba(255, 46, 76, 0.5);
+        }
+        .bg-grid-pattern {
+            background-image: radial-gradient(rgba(204, 255, , 0.1) 1px, transparent 0);
+            background-size: 24px 24px;
+        }
+        .court-lines {
+            background: linear-gradient(90deg, rgba(204, 255, 0, 0.05) 2px, transparent 2px),
+                        linear-gradient(rgba(204, 255, 0, 0.05) 2px, transparent 2px);
+            background-size: 80px 80px;
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0b0f19;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1f2937;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ccff00;
+        }
+    </style>
+</head>
+<body class="bg-brand-black text-gray-100 court-lines">
+
+    <!-- Navigation Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-brand-black/80 backdrop-blur-md border-b border-gray-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#hero" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-xl bg-brand-neon flex items-center justify-center text-brand-black font-black text-xl transform group-hover:rotate-12 transition-transform duration-300 shadow-[0_0_15px_rgba(204,255,0,0.4)]">
+                    N9
+                </div>
+                <div>
+                    <span class="font-display font-black text-xl tracking-wider text-white block leading-none">NAKULA</span>
+                    <span class="text-xs font-bold text-brand-neon tracking-widest uppercase">Badminton Player</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center gap-8 font-semibold text-sm">
+                <a href="#about" class="text-gray-300 hover:text-brand-neon transition-colors">Profil</a>
+                <a href="#stats" class="text-gray-300 hover:text-brand-neon transition-colors">Statistik & Skill</a>
+                <a href="#achievements" class="text-gray-300 hover:text-brand-neon transition-colors">Prestasi</a>
+                <a href="#gear" class="text-gray-300 hover:text-brand-neon transition-colors">Perlengkapan</a>
+                <a href="#gallery" class="text-gray-300 hover:text-brand-neon transition-colors">Galeri</a>
+                <a href="#contact" class="px-5 py-2.5 rounded-full bg-brand-neon text-brand-black font-bold hover:bg-white hover:shadow-[0_0_20px_rgba(204,255,0,0.6)] transition-all transform hover:-translate-y-0.5">
+                    Hubungi
+                </a>
+            </nav>
+
+            <!-- Mobile Menu Toggle Button -->
+            <button id="mobileMenuBtn" class="md:hidden text-gray-300 hover:text-brand-neon focus:outline-none p-2" aria-label="Toggle Navigation">
+                <i class="fa-solid fa-bars text-2xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-brand-dark/95 border-b border-gray-800 px-4 pt-2 pb-6 space-y-3">
+            <a href="#about" class="mobile-link block py-2 text-gray-300 hover:text-brand-neon font-medium">Profil</a>
+            <a href="#stats" class="mobile-link block py-2 text-gray-300 hover:text-brand-neon font-medium">Statistik & Skill</a>
+            <a href="#achievements" class="mobile-link block py-2 text-gray-300 hover:text-brand-neon font-medium">Prestasi</a>
+            <a href="#gear" class="mobile-link block py-2 text-gray-300 hover:text-brand-neon font-medium">Perlengkapan</a>
+            <a href="#gallery" class="mobile-link block py-2 text-gray-300 hover:text-brand-neon font-medium">Galeri</a>
+            <a href="#contact" class="mobile-link block py-2.5 text-center rounded-lg bg-brand-neon text-brand-black font-bold">Hubungi Saya</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative min-h-screen pt-28 pb-16 flex items-center justify-center overflow-hidden bg-grid-pattern">
+        <!-- Background Gradient Glows -->
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-brand-neon/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-brand-red/10 rounded-full blur-3xl pointer-events-none"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Hero Text -->
+                <div class="lg:col-span-7 text-center lg:text-left space-y-6">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gray-800/80 border border-brand-neon/30 text-brand-neon text-xs sm:text-sm font-bold tracking-wider uppercase backdrop-blur-sm">
+                        <i class="fa-solid fa-shuttlecock text-brand-red"></i> KELAS IX. B &bull; Student Athlete
+                    </div>
+                    
+                    <h1 class="text-4xl sm:text-6xl lg:text-7xl font-display font-black tracking-tight text-white uppercase italic leading-none">
+                        MOH <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-neon via-white to-brand-neon text-glow">NAKULA</span>
+                    </h1>
+                    
+                    <p class="text-xl sm:text-2xl font-bold italic text-brand-red text-glow-red font-display tracking-wide">
+                        "Drop Shot, Smash, Repeat!"
+                    </p>
+                    
+                    <p class="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
+                        Pemain bulutangkis muda berbakat berdedikasi tinggi dari Kelas IX. B. Menggabungkan kecepatan, akurasi, dan smash tajam untuk menguasai setiap sudut lapangan.
+                    </p>
+                    
+                    <!-- Hero CTA Buttons -->
+                    <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-4">
+                        <a href="#stats" class="px-8 py-4 rounded-xl bg-brand-neon text-brand-black font-extrabold flex items-center gap-3 hover:bg-white transition-all transform hover:-translate-y-1 shadow-[0_0_25px_rgba(204,255,0,0.4)]">
+                            <i class="fa-solid fa-chart-line text-lg"></i> Lihat Performa
+                        </a>
+                        <a href="#achievements" class="px-8 py-4 rounded-xl bg-brand-card text-white border border-gray-700 font-bold flex items-center gap-3 hover:border-brand-neon hover:text-brand-neon transition-all transform hover:-translate-y-1">
+                            <i class="fa-solid fa-trophy text-amber-400"></i> Daftar Prestasi
+                        </a>
+                    </div>
+
+                    <!-- Quick Info Badges -->
+                    <div class="pt-8 grid grid-cols-3 gap-4 border-t border-gray-800/80 max-w-lg mx-auto lg:mx-0">
+                        <div class="text-center lg:text-left">
+                            <p class="text-xs text-gray-500 uppercase tracking-wider font-semibold">Gaya Main</p>
+                            <p class="text-sm sm:text-base font-bold text-white mt-1">Aggressive Attacker</p>
+                        </div>
+                        <div class="text-center lg:text-left">
+                            <p class="text-xs text-gray-500 uppercase tracking-wider font-semibold">Pegangan</p>
+                            <p class="text-sm sm:text-base font-bold text-white mt-1">Tangan Kanan</p>
+                        </div>
+                        <div class="text-center lg:text-left">
+                            <p class="text-xs text-gray-500 uppercase tracking-wider font-semibold">Spesialisasi</p>
+                            <p class="text-sm sm:text-base font-bold text-brand-neon mt-1">Tunggal & Ganda</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Hero Image Graphic Card -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative w-full max-w-md">
+                        <!-- Neon Frame Border -->
+                        <div class="absolute -inset-1 bg-gradient-to-r from-brand-neon to-brand-red rounded-3xl blur opacity-40 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse"></div>
+                        
+                        <div class="relative bg-brand-card border border-gray-700/60 rounded-3xl p-6 shadow-2xl overflow-hidden">
+                            <!-- Badminton Graphic Illustration Placeholder -->
+                            <div class="relative h-80 sm:h-96 w-full rounded-2xl bg-gradient-to-b from-gray-900 to-brand-black flex flex-col items-center justify-center p-6 border border-gray-800 overflow-hidden group">
+                                
+                                <!-- Decorative Shuttlecock Background Icon -->
+                                <i class="fa-solid fa-shuttlecock text-[180px] text-brand-neon/10 absolute -right-10 -bottom-10 transform -rotate-45"></i>
+                                
+                                <!-- Main Player Silhouette / Graphic Avatar -->
+                                <div class="w-32 h-32 sm:w-40 sm:h-40 rounded-full bg-gradient-to-br from-brand-neon to-brand-red p-1 mb-4 shadow-[0_0_30px_rgba(204,255,0,0.3)]">
+                                    <div class="w-full h-full rounded-full bg-brand-dark flex items-center justify-center overflow-hidden">
+                                        <i class="fa-solid fa-user-ninja text-6xl text-gray-300"></i>
+                                    </div>
+                                </div>
+                                
+                                <h3 class="font-display font-black text-2xl text-white">MOH NAKULA</h3>
+                                <p class="text-xs text-brand-neon tracking-widest font-bold uppercase mb-4">Kelas IX. B &bull; No. Punggung #09</p>
+                                
+                                <div class="w-full bg-brand-black/60 backdrop-blur p-3 rounded-xl border border-gray-800 flex justify-around text-center">
+                                    <div>
+                                        <p class="text-xs text-gray-400">Match Rate</p>
+                                        <p class="text-lg font-black text-white">88%</p>
+                                    </div>
+                                    <div class="border-r border-gray-800"></div>
+                                    <div>
+                                        <p class="text-xs text-gray-400">Smash Speed</p>
+                                        <p class="text-lg font-black text-brand-neon">280 km/h</p>
+                                    </div>
+                                    <div class="border-r border-gray-800"></div>
+                                    <div>
+                                        <p class="text-xs text-gray-400">Trofi</p>
+                                        <p class="text-lg font-black text-amber-400">8+</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Profile & About Me Section -->
+    <section id="about" class="py-20 bg-brand-dark relative border-y border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-bold text-brand-neon uppercase tracking-widest">Tentang Atlet</h2>
+                <p class="text-3xl sm:text-4xl font-display font-black text-white mt-1">PROFIL & BIOGRAFI</p>
+                <div class="w-16 h-1 bg-brand-neon mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+                <!-- Bio Text -->
+                <div class="lg:col-span-7 bg-brand-card border border-gray-800 rounded-2xl p-6 sm:p-8 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-3 mb-6">
+                            <span class="w-3 h-8 bg-brand-red rounded-full"></span>
+                            <h3 class="text-2xl font-display font-bold text-white">Semangat Berprestasi di Setiap Laga</h3>
+                        </div>
+                        <p class="text-gray-300 leading-relaxed mb-4">
+                            Halo! Saya <strong class="text-brand-neon">Moh Nakula</strong>, siswa dari **Kelas IX. B** yang memiliki passion tinggi dalam dunia olahraga bulutangkis. Sejak awal masuk sekolah menengah, saya rutin melatih fisik, teknik, serta mental bertanding untuk mengasah gaya permainan yang agresif dan pantang menyerah.
+                        </p>
+                        <p class="text-gray-300 leading-relaxed mb-6">
+                            Bagi saya, bulutangkis bukan sekadar hobi, melainkan arena untuk membentuk kedisiplinan dan sportivitas. Saya aktif mewakili kelas dan sekolah dalam berbagai ajang turnamen internal maupun kompetisi antar-pelajar (seperti O2SN Junior).
+                        </p>
+                    </div>
+
+                    <!-- Daily Routine / Values -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-6 border-t border-gray-800">
+                        <div class="flex items-start gap-3">
+                            <div class="p-2.5 rounded-lg bg-brand-neon/10 text-brand-neon">
+                                <i class="fa-solid fa-dumbbell text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-sm">Latihan Rutin</h4>
+                                <p class="text-xs text-gray-400 mt-0.5">4x seminggu mencakup fisik, footwork & drill smash.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="p-2.5 rounded-lg bg-brand-red/10 text-brand-red">
+                                <i class="fa-solid fa-bullseye text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-sm">Fokus Target</h4>
+                                <p class="text-xs text-gray-400 mt-0.5">Menjadi juara utama turnamen antar-sekolah tingkat kota.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Personal Specs Card -->
+                <div class="lg:col-span-5 bg-brand-card border border-gray-800 rounded-2xl p-6 sm:p-8 flex flex-col justify-center">
+                    <h3 class="text-xl font-display font-bold text-white mb-6 flex items-center gap-2">
+                        <i class="fa-solid fa-id-card text-brand-neon"></i> Data Fisik & Spesifikasi
+                    </h3>
+
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center p-3 rounded-xl bg-brand-black/50 border border-gray-800">
+                            <span class="text-gray-400 text-sm flex items-center gap-2">
+                                <i class="fa-solid fa-user text-gray-500 w-5"></i> Nama Lengkap
+                            </span>
+                            <span class="font-bold text-white text-sm">MOH NAKULA</span>
+                        </div>
+                        
+                        <div class="flex justify-between items-center p-3 rounded-xl bg-brand-black/50 border border-gray-800">
+                            <span class="text-gray-400 text-sm flex items-center gap-2">
+                                <i class="fa-solid fa-graduation-cap text-gray-500 w-5"></i> Kelas / Sekolah
+                            </span>
+                            <span class="font-bold text-brand-neon text-sm">KELAS IX. B</span>
+                        </div>
+
+                        <div class="flex justify-between items-center p-3 rounded-xl bg-brand-black/50 border border-gray-800">
+                            <span class="text-gray-400 text-sm flex items-center gap-2">
+                                <i class="fa-solid fa-ruler-vertical text-gray-500 w-5"></i> Tinggi / Berat
+                            </span>
+                            <span class="font-bold text-white text-sm">168 cm / 58 kg</span>
+                        </div>
+
+                        <div class="flex justify-between items-center p-3 rounded-xl bg-brand-black/50 border border-gray-800">
+                            <span class="text-gray-400 text-sm flex items-center gap-2">
+                                <i class="fa-solid fa-hand text-gray-500 w-5"></i> Tangan Dominan
+                            </span>
+                            <span class="font-bold text-white text-sm">Kanan (Right-handed)</span>
+                        </div>
+
+                        <div class="flex justify-between items-center p-3 rounded-xl bg-brand-black/50 border border-gray-800">
+                            <span class="text-gray-400 text-sm flex items-center gap-2">
+                                <i class="fa-solid fa-bolt text-gray-500 w-5"></i> Style Permainan
+                            </span>
+                            <span class="font-bold text-brand-red text-sm">Attacker / Power Hitter</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats & Skills Section -->
+    <section id="stats" class="py-20 bg-brand-black relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-bold text-brand-neon uppercase tracking-widest">Analisis Kemampuan</h2>
+                <p class="text-3xl sm:text-4xl font-display font-black text-white mt-1">STATISTIK & SKILL PERMAINAN</p>
+                <div class="w-16 h-1 bg-brand-neon mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                
+                <!-- Left: Skill Bars -->
+                <div class="space-y-6 bg-brand-card p-6 sm:p-8 rounded-2xl border border-gray-800">
+                    <h3 class="text-xl font-display font-bold text-white mb-6">Atribut Teknikal Nakula</h3>
+
+                    <!-- Skill 1: Smash Power -->
+                    <div>
+                        <div class="flex justify-between text-sm font-bold mb-2">
+                            <span class="text-gray-200 flex items-center gap-2">
+                                <i class="fa-solid fa-fire text-brand-red"></i> Smash Power
+                            </span>
+                            <span class="text-brand-neon">92%</span>
+                        </div>
+                        <div class="w-full bg-gray-800 rounded-full h-3 overflow-hidden p-0.5 border border-gray-700">
+                            <div class="bg-gradient-to-r from-brand-red to-brand-neon h-full rounded-full transition-all duration-1000" style="width: 92%"></div>
+                        </div>
+                    </div>
+
+                    <!-- Skill 2: Agility & Footwork -->
+                    <div>
+                        <div class="flex justify-between text-sm font-bold mb-2">
+                            <span class="text-gray-200 flex items-center gap-2">
+                                <i class="fa-solid fa-person-running text-brand-neon"></i> Agility & Footwork
+                            </span>
+                            <span class="text-brand-neon">88%</span>
+                        </div>
+                        <div class="w-full bg-gray-800 rounded-full h-3 overflow-hidden p-0.5 border border-gray-700">
+                            <div class="bg-brand-neon h-full rounded-full transition-all duration-1000" style="width: 88%"></div>
+                        </div>
+                    </div>
+
+                    <!-- Skill 3: Net Play & Control -->
+                    <div>
+                        <div class="flex justify-between text-sm font-bold mb-2">
+                            <span class="text-gray-200 flex items-center gap-2">
+                                <i class="fa-solid fa-border-all text-cyan-400"></i> Net Play & Control
+                            </span>
+                            <span class="text-brand-neon">85%</span>
+                        </div>
+                        <div class="w-full bg-gray-800 rounded-full h-3 overflow-hidden p-0.5 border border-gray-700">
+                            <div class="bg-gradient-to-r from-cyan-500 to-brand-neon h-full rounded-full transition-all duration-1000" style="width: 85%"></div>
+                        </div>
+                    </div>
+
+                    <!-- Skill 4: Stamina & Endurance -->
+                    <div>
+                        <div class="flex justify-between text-sm font-bold mb-2">
+                            <span class="text-gray-200 flex items-center gap-2">
+                                <i class="fa-solid fa-heart-pulse text-rose-500"></i> Stamina & Ketahanan
+                            </span>
+                            <span class="text-brand-neon">90%</span>
+                        </div>
+                        <div class="w-full bg-gray-800 rounded-full h-3 overflow-hidden p-0.5 border border-gray-700">
+                            <div class="bg-rose-500 h-full rounded-full transition-all duration-1000" style="width: 90%"></div>
+                        </div>
+                    </div>
+
+                    <!-- Skill 5: Court Strategy -->
+                    <div>
+                        <div class="flex justify-between text-sm font-bold mb-2">
+                            <span class="text-gray-200 flex items-center gap-2">
+                                <i class="fa-solid fa-brain text-purple-400"></i> TakTik & Court Coverage
+                            </span>
+                            <span class="text-brand-neon">86%</span>
+                        </div>
+                        <div class="w-full bg-gray-800 rounded-full h-3 overflow-hidden p-0.5 border border-gray-700">
+                            <div class="bg-purple-500 h-full rounded-full transition-all duration-1000" style="width: 86%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Game Metrics Grid -->
+                <div class="grid grid-cols-2 gap-4 sm:gap-6">
+                    <div class="bg-brand-card p-6 rounded-2xl border border-gray-800 text-center hover:border-brand-neon/50 transition-colors">
+                        <div class="w-12 h-12 rounded-xl bg-brand-neon/10 text-brand-neon flex items-center justify-center mx-auto mb-3">
+                            <i class="fa-solid fa-trophy text-2xl"></i>
+                        </div>
+                        <p class="text-3xl sm:text-4xl font-black font-display text-white">12+</p>
+                        <p class="text-xs text-gray-400 mt-1 uppercase tracking-wider font-semibold">Total Turnamen</p>
+                    </div>
+
+                    <div class="bg-brand-card p-6 rounded-2xl border border-gray-800 text-center hover:border-brand-neon/50 transition-colors">
+                        <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center mx-auto mb-3">
+                            <i class="fa-solid fa-medal text-2xl"></i>
+                        </div>
+                        <p class="text-3xl sm:text-4xl font-black font-display text-white">5</p>
+                        <p class="text-xs text-gray-400 mt-1 uppercase tracking-wider font-semibold">Gelar Emas</p>
+                    </div>
+
+                    <div class="bg-brand-card p-6 rounded-2xl border border-gray-800 text-center hover:border-brand-neon/50 transition-colors">
+                        <div class="w-12 h-12 rounded-xl bg-brand-red/10 text-brand-red flex items-center justify-center mx-auto mb-3">
+                            <i class="fa-solid fa-bolt text-2xl"></i>
+                        </div>
+                        <p class="text-3xl sm:text-4xl font-black font-display text-white">280 <span class="text-xs font-normal">km/h</span></p>
+                        <p class="text-xs text-gray-400 mt-1 uppercase tracking-wider font-semibold">Kecepatan Smash</p>
+                    </div>
+
+                    <div class="bg-brand-card p-6 rounded-2xl border border-gray-800 text-center hover:border-brand-neon/50 transition-colors">
+                        <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center mx-auto mb-3">
+                            <i class="fa-solid fa-chart-pie text-2xl"></i>
+                        </div>
+                        <p class="text-3xl sm:text-4xl font-black font-display text-white">88%</p>
+                        <p class="text-xs text-gray-400 mt-1 uppercase tracking-wider font-semibold">Win Rate Matches</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements & Trophies Section -->
+    <section id="achievements" class="py-20 bg-brand-dark border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-xs font-bold text-brand-neon uppercase tracking-widest">Rekam Jejak</h2>
+                <p class="text-3xl sm:text-4xl font-display font-black text-white mt-1">PRESTASI & PENGHARGAAN</p>
+                <div class="w-16 h-1 bg-brand-neon mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <!-- Achievement Filter Tabs -->
+            <div class="flex justify-center gap-2 sm:gap-4 mb-10 flex-wrap">
+                <button class="achieve-filter active px-5 py-2 rounded-full text-xs sm:text-sm font-bold transition-all bg-brand-neon text-brand-black" data-filter="all">
+                    Semua
+                </button>
+                <button class="achieve-filter px-5 py-2 rounded-full text-xs sm:text-sm font-bold transition-all bg-brand-card text-gray-300 hover:text-white hover:bg-gray-700" data-filter="gold">
+                    🥇 Juara 1
+                </button>
+                <button class="achieve-filter px-5 py-2 rounded-full text-xs sm:text-sm font-bold transition-all bg-brand-card text-gray-300 hover:text-white hover:bg-gray-700" data-filter="silver">
+                    🥈 Runner Up
+                </button>
+                <button class="achieve-filter px-5 py-2 rounded-full text-xs sm:text-sm font-bold transition-all bg-brand-card text-gray-300 hover:text-white hover:bg-gray-700" data-filter="school">
+                    🏫 Antar-Kelas / Sekolah
+                </button>
+            </div>
+
+            <!-- Achievements Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="achievementsGrid">
+                
+                <!-- Card 1 -->
+                <div class="achievement-card gold school bg-brand-card border border-amber-500/30 rounded-2xl p-6 relative overflow-hidden group hover:-translate-y-2 transition-all duration-300 shadow-xl">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-amber-500/10 rounded-bl-full pointer-events-none"></div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="px-3 py-1 rounded-full text-xs font-black bg-amber-500/20 text-amber-400 border border-amber-500/40 uppercase">
+                            <i class="fa-solid fa-medal mr-1"></i> Juara 1 Gold
+                        </span>
+                        <span class="text-xs text-gray-400 font-bold">2026</span>
+                    </div>
+                    <h3 class="text-xl font-display font-bold text-white mb-2 group-hover:text-brand-neon transition-colors">
+                        Turnamen Badminton Classmeet IX
+                    </h3>
+                    <p class="text-xs text-gray-400 mb-4">Mewakili Kelas IX. B dalam kategori Tunggal Putra & Ganda Putra.</p>
+                    <div class="flex items-center gap-2 text-xs text-gray-400 pt-3 border-t border-gray-800">
+                        <i class="fa-solid fa-location-dot text-brand-red"></i> GOR Sekolah
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="achievement-card gold bg-brand-card border border-amber-500/30 rounded-2xl p-6 relative overflow-hidden group hover:-translate-y-2 transition-all duration-300 shadow-xl">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-amber-500/10 rounded-bl-full pointer-events-none"></div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="px-3 py-1 rounded-full text-xs font-black bg-amber-500/20 text-amber-400 border border-amber-500/40 uppercase">
+                            <i class="fa-solid fa-medal mr-1"></i> Juara 1 Gold
+                        </span>
+                        <span class="text-xs text-gray-400 font-bold">2025</span>
+                    </div>
+                    <h3 class="text-xl font-display font-bold text-white mb-2 group-hover:text-brand-neon transition-colors">
+                        O2SN Tingkat SMP Sub-Rayon
+                    </h3>
+                    <p class="text-xs text-gray-400 mb-4">Kategori Tunggal Putra Remaja. Menang dalam 4 babak berturut-turut.</p>
+                    <div class="flex items-center gap-2 text-xs text-gray-400 pt-3 border-t border-gray-800">
+                        <i class="fa-solid fa-trophy text-amber-400"></i> Olimpiade Olahraga Siswa
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="achievement-card silver bg-brand-card border border-gray-400/30 rounded-2xl p-6 relative overflow-hidden group hover:-translate-y-2 transition-all duration-300 shadow-xl">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-gray-400/10 rounded-bl-full pointer-events-none"></div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="px-3 py-1 rounded-full text-xs font-black bg-gray-400/20 text-gray-300 border border-gray-400/40 uppercase">
+                            <i class="fa-solid fa-medal mr-1"></i> Juara 2 Silver
+                        </span>
+                        <span class="text-xs text-gray-400 font-bold">2025</span>
+                    </div>
+                    <h3 class="text-xl font-display font-bold text-white mb-2 group-hover:text-brand-neon transition-colors">
+                        Kejuaraan Bulutangkis Pelajar Kota
+                    </h3>
+                    <p class="text-xs text-gray-400 mb-4">Kategori Ganda Putra U-15. Pertandingan sengit rubber game di babak final.</p>
+                    <div class="flex items-center gap-2 text-xs text-gray-400 pt-3 border-t border-gray-800">
+                        <i class="fa-solid fa-award text-gray-300"></i> PBSI Kota Cup
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="achievement-card school gold bg-brand-card border border-amber-500/30 rounded-2xl p-6 relative overflow-hidden group hover:-translate-y-2 transition-all duration-300 shadow-xl">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-amber-500/10 rounded-bl-full pointer-events-none"></div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="px-3 py-1 rounded-full text-xs font-black bg-amber-500/20 text-amber-400 border border-amber-500/40 uppercase">
+                            <i class="fa-solid fa-medal mr-1"></i> Juara 1 Gold
+                        </span>
+                        <span class="text-xs text-gray-400 font-bold">2024</span>
+                    </div>
+                    <h3 class="text-xl font-display font-bold text-white mb-2 group-hover:text-brand-neon transition-colors">
+                        Turnamen HUT Sekolah IX.B Team
+                    </h3>
+                    <p class="text-xs text-gray-400 mb-4">Membawa tim kelas IX. B meraih trofi bergilir bulutangkis sekolah.</p>
+                    <div class="flex items-center gap-2 text-xs text-gray-400 pt-3 border-t border-gray-800">
+                        <i class="fa-solid fa-school text-brand-neon"></i> Turnamen Internal
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="achievement-card silver bg-brand-card border border-gray-400/30 rounded-2xl p-6 relative overflow-hidden group hover:-translate-y-2 transition-all duration-300 shadow-xl">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-gray-400/10 rounded-bl-full pointer-events-none"></div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="px-3 py-1 rounded-full text-xs font-black bg-gray-400/20 text-gray-300 border border-gray-400/40 uppercase">
+                            <i class="fa-solid fa-medal mr-1"></i> Semifinalis
+                        </span>
+                        <span class="text-xs text-gray-400 font-bold">2024</span>
+                    </div>
+                    <h3 class="text-xl font-display font-bold text-white mb-2 group-hover:text-brand-neon transition-colors">
+                        Sirkuit Remaja Junior Open
+                    </h3>
+                    <p class="text-xs text-gray-400 mb-4">Peringkat Top 4 dari 32 peserta kelompok umur di tingkat regional.</p>
+                    <div class="flex items-center gap-2 text-xs text-gray-400 pt-3 border-t border-gray-800">
+                        <i class="fa-solid fa-earth-americas text-brand-cyan"></i> Sirkuit Junior
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Equipment & Gear Specs Section -->
+    <section id="gear" class="py-20 bg-brand-black relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-bold text-brand-neon uppercase tracking-widest">Senjata Bertanding</h2>
+                <p class="text-3xl sm:text-4xl font-display font-black text-white mt-1">PERLENGKAPAN & GEAR SPECS</p>
+                <div class="w-16 h-1 bg-brand-neon mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- Racket Specs -->
+                <div class="bg-brand-card border border-gray-800 hover:border-brand-neon/60 rounded-2xl p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-brand-neon/10 text-brand-neon flex items-center justify-center mb-4 text-2xl">
+                            <i class="fa-solid fa-baseball-bat-ball"></i>
+                        </div>
+                        <span class="text-xs text-brand-neon font-bold uppercase tracking-wider">Raket Utama</span>
+                        <h3 class="text-lg font-bold text-white mt-1 mb-3">Yonex Astrox 88D Game</h3>
+                        <p class="text-xs text-gray-400 mb-4">Dirancang khusus untuk pemain tipe penyerang dengan fleksibilitas head-heavy untuk daya smash maksimal.</p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-800 space-y-2 text-xs">
+                        <div class="flex justify-between"><span class="text-gray-400">Weight/Grip:</span> <span class="text-white font-semibold">4U / G5</span></div>
+                        <div class="flex justify-between"><span class="text-gray-400">Balance:</span> <span class="text-brand-red font-semibold">Head Heavy</span></div>
+                    </div>
+                </div>
+
+                <!-- Strings Specs -->
+                <div class="bg-brand-card border border-gray-800 hover:border-brand-neon/60 rounded-2xl p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center mb-4 text-2xl">
+                            <i class="fa-solid fa-diagram-project"></i>
+                        </div>
+                        <span class="text-xs text-cyan-400 font-bold uppercase tracking-wider">Senar Raket</span>
+                        <h3 class="text-lg font-bold text-white mt-1 mb-3">Yonex BG-66 Ultimax</h3>
+                        <p class="text-xs text-gray-400 mb-4">Memberikan performa repulsi tinggi dan suara pantulan (hitting sound) yang sangat nyaring.</p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-800 space-y-2 text-xs">
+                        <div class="flex justify-between"><span class="text-gray-400">Tarikan (Tension):</span> <span class="text-white font-semibold">28 lbs</span></div>
+                        <div class="flex justify-between"><span class="text-gray-400">Karakter:</span> <span class="text-cyan-400 font-semibold">High Repulsion</span></div>
+                    </div>
+                </div>
+
+                <!-- Footwear Specs -->
+                <div class="bg-brand-card border border-gray-800 hover:border-brand-neon/60 rounded-2xl p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-brand-red/10 text-brand-red flex items-center justify-center mb-4 text-2xl">
+                            <i class="fa-solid fa-shoe-prints"></i>
+                        </div>
+                        <span class="text-xs text-brand-red font-bold uppercase tracking-wider">Sepatu Lapangan</span>
+                        <h3 class="text-lg font-bold text-white mt-1 mb-3">Victor A970 Ace</h3>
+                        <p class="text-xs text-gray-400 mb-4">Dukungan cushion ekstra untuk menyerap benturan saat melakukan jump smash berulang kali.</p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-800 space-y-2 text-xs">
+                        <div class="flex justify-between"><span class="text-gray-400">Outsole:</span> <span class="text-white font-semibold">Non-Marking Rubber</span></div>
+                        <div class="flex justify-between"><span class="text-gray-400">Grip:</span> <span class="text-brand-neon font-semibold">Anti-Slip Tech</span></div>
+                    </div>
+                </div>
+
+                <!-- Accessories Specs -->
+                <div class="bg-brand-card border border-gray-800 hover:border-brand-neon/60 rounded-2xl p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center mb-4 text-2xl">
+                            <i class="fa-solid fa-grip"></i>
+                        </div>
+                        <span class="text-xs text-purple-400 font-bold uppercase tracking-wider">Grip & Shuttlecock</span>
+                        <h3 class="text-lg font-bold text-white mt-1 mb-3">AC102EX Overgrip</h3>
+                        <p class="text-xs text-gray-400 mb-4">Grip karet berkualitas tinggi dengan daya serap keringat tinggi agar genggaman tidak licin.</p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-800 space-y-2 text-xs">
+                        <div class="flex justify-between"><span class="text-gray-400">Shuttlecock Favorit:</span> <span class="text-white font-semibold">JP Gold / Shuttlecock Laju</span></div>
+                        <div class="flex justify-between"><span class="text-gray-400">Tipe Grip:</span> <span class="text-purple-400 font-semibold">Tacky Rubber Overgrip</span></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Match Gallery / Highlights Section -->
+    <section id="gallery" class="py-20 bg-brand-dark border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-bold text-brand-neon uppercase tracking-widest">Dokumentasi Aksi</h2>
+                <p class="text-3xl sm:text-4xl font-display font-black text-white mt-1">GALERI TANDING & LATIHAN</p>
+                <div class="w-16 h-1 bg-brand-neon mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- Gallery Item 1 -->
+                <div class="relative group overflow-hidden rounded-2xl bg-brand-card border border-gray-800 h-64 shadow-xl">
+                    <img src="https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?q=80&w=800&auto=format&fit=crop" 
+                         alt="Smash Attack" 
+                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-80 group-hover:opacity-100"
+                         onerror="this.src='https://placehold.co/800x600/1f2937/ccff00?text=Match+Smash+Action'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-black via-transparent to-transparent opacity-90 group-hover:opacity-75 transition-opacity"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-6">
+                        <span class="text-xs font-bold text-brand-neon uppercase tracking-wider">Jump Smash</span>
+                        <h4 class="text-lg font-bold text-white mt-1">Momen Eksekusi Smash Tajam</h4>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 2 -->
+                <div class="relative group overflow-hidden rounded-2xl bg-brand-card border border-gray-800 h-64 shadow-xl">
+                    <img src="https://images.unsplash.com/photo-1521537634581-0dced2efa2a3?q=80&w=800&auto=format&fit=crop" 
+                         alt="Netting Control" 
+                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-80 group-hover:opacity-100"
+                         onerror="this.src='https://placehold.co/800x600/1f2937/00f0ff?text=Netting+Control'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-black via-transparent to-transparent opacity-90 group-hover:opacity-75 transition-opacity"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-6">
+                        <span class="text-xs font-bold text-cyan-400 uppercase tracking-wider">Akurasi Depan Net</span>
+                        <h4 class="text-lg font-bold text-white mt-1">Kontrol Tipis di Depan Net</h4>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 3 -->
+                <div class="relative group overflow-hidden rounded-2xl bg-brand-card border border-gray-800 h-64 shadow-xl">
+                    <img src="https://images.unsplash.com/photo-1613918431208-674b4887df0b?q=80&w=800&auto=format&fit=crop" 
+                         alt="Penyerahan Piala" 
+                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-80 group-hover:opacity-100"
+                         onerror="this.src='https://placehold.co/800x600/1f2937/ff2e4c?text=Trophy+Ceremony'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-black via-transparent to-transparent opacity-90 group-hover:opacity-75 transition-opacity"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-6">
+                        <span class="text-xs font-bold text-amber-400 uppercase tracking-wider">Podium Juara</span>
+                        <h4 class="text-lg font-bold text-white mt-1">Penyerahan Trofi Classmeet IX</h4>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Social Footer -->
+    <section id="contact" class="py-20 bg-brand-black relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                
+                <!-- Contact Info -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div>
+                        <h2 class="text-xs font-bold text-brand-neon uppercase tracking-widest">Ajak Sparring & Kontak</h2>
+                        <p class="text-3xl sm:text-4xl font-display font-black text-white mt-1">MARI TANDING & BERLATIH!</p>
+                        <div class="w-16 h-1 bg-brand-neon mt-4 rounded-full"></div>
+                    </div>
+
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Tertarik untuk mengadakan laga persahabatan, sparring badminton antar-kelas, atau ingin Nakula memperkuat tim sekolahmu? Silakan hubungi langsung di bawah ini.
+                    </p>
+
+                    <div class="space-y-4 pt-4">
+                        <div class="flex items-center gap-4 p-4 rounded-xl bg-brand-card border border-gray-800">
+                            <div class="w-10 h-10 rounded-lg bg-brand-neon/10 text-brand-neon flex items-center justify-center">
+                                <i class="fa-solid fa-graduation-cap text-lg"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-400">Kelas / Angkatan</p>
+                                <p class="font-bold text-white text-sm">Kelas IX. B (Siswa SMP)</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4 p-4 rounded-xl bg-brand-card border border-gray-800">
+                            <div class="w-10 h-10 rounded-lg bg-brand-neon/10 text-brand-neon flex items-center justify-center">
+                                <i class="fa-solid fa-location-dot text-lg"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-400">Basecourt / GOR Latihan</p>
+                                <p class="font-bold text-white text-sm">GOR Utama Sekolah & PB Lokal</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4 p-4 rounded-xl bg-brand-card border border-gray-800">
+                            <div class="w-10 h-10 rounded-lg bg-brand-neon/10 text-brand-neon flex items-center justify-center">
+                                <i class="fa-solid fa-envelope text-lg"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-400">Email Kontak</p>
+                                <p class="font-bold text-white text-sm">nakula.badminton9b@gmail.com</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Social Icons -->
+                    <div class="pt-4 flex items-center gap-3">
+                        <a href="#" class="w-10 h-10 rounded-full bg-brand-card border border-gray-700 flex items-center justify-center text-gray-300 hover:text-brand-neon hover:border-brand-neon transition-colors" aria-label="Instagram">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-brand-card border border-gray-700 flex items-center justify-center text-gray-300 hover:text-brand-neon hover:border-brand-neon transition-colors" aria-label="YouTube">
+                            <i class="fa-brands fa-youtube"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-brand-card border border-gray-700 flex items-center justify-center text-gray-300 hover:text-brand-neon hover:border-brand-neon transition-colors" aria-label="WhatsApp">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Message Form -->
+                <div class="lg:col-span-7 bg-brand-card border border-gray-800 p-6 sm:p-8 rounded-2xl">
+                    <h3 class="text-xl font-display font-bold text-white mb-6">Kirim Pesan Ajakan Sparring / Pertanyaan</h3>
+                    
+                    <form id="contactForm" class="space-y-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold text-gray-400 mb-1">Nama Pengirim</label>
+                                <input type="text" id="senderName" required placeholder="Nama lengkap kamu" class="w-full bg-brand-black border border-gray-700 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-brand-neon">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-gray-400 mb-1">Kelas / Tim / Sekolah</label>
+                                <input type="text" id="senderTeam" required placeholder="Contoh: Tim IX. A / SMP 1" class="w-full bg-brand-black border border-gray-700 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-brand-neon">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-gray-400 mb-1">Topik Pesan</label>
+                            <select id="msgTopic" class="w-full bg-brand-black border border-gray-700 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-brand-neon">
+                                <option>Ajak Sparring Latihan</option>
+                                <option>Undangan Tim Badminton</option>
+                                <option>Tanya Jadwal Latihan</option>
+                                <option>Lainnya</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-gray-400 mb-1">Pesan Lengkap</label>
+                            <textarea id="msgBody" rows="4" required placeholder="Tuliskan jadwal tanding atau pesan kamu di sini..." class="w-full bg-brand-black border border-gray-700 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-brand-neon"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full py-4 rounded-xl bg-brand-neon text-brand-black font-extrabold flex items-center justify-center gap-2 hover:bg-white transition-colors shadow-[0_0_20px_rgba(204,255,0,0.3)]">
+                            <i class="fa-solid fa-paper-plane"></i> Kirim Pesan Sekarang
+                        </button>
+                    </form>
+
+                    <!-- Alert Box Notification -->
+                    <div id="formAlert" class="hidden mt-4 p-4 rounded-xl bg-brand-neon/10 border border-brand-neon text-brand-neon text-xs font-bold text-center">
+                        Pesan berhasil dikirim! Nakula akan merespons ajakan sparring kamu segera.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Copyright -->
+    <footer class="py-8 bg-brand-black border-t border-gray-900 text-center text-xs text-gray-500">
+        <div class="max-w-7xl mx-auto px-4">
+            <p>&copy; 2026 MOH NAKULA - KELAS IX. B. All rights reserved.</p>
+            <p class="mt-1 text-gray-600">Portofolio Atlet Bulutangkis Sekolah &bull; Built with Speed & Passion</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Interactions -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Achievements Filter Logic
+        const filterBtns = document.querySelectorAll('.achieve-filter');
+        const achieveCards = document.querySelectorAll('.achievement-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Update active tab styling
+                filterBtns.forEach(b => {
+                    b.classList.remove('bg-brand-neon', 'text-brand-black', 'active');
+                    b.classList.add('bg-brand-card', 'text-gray-300');
+                });
+                btn.classList.add('bg-brand-neon', 'text-brand-black', 'active');
+                btn.classList.remove('bg-brand-card', 'text-gray-300');
+
+                const filter = btn.getAttribute('data-filter');
+
+                achieveCards.forEach(card => {
+                    if (filter === 'all' || card.classList.contains(filter)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Form Submit Simulation
+        const contactForm = document.getElementById('contactForm');
+        const formAlert = document.getElementById('formAlert');
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Show success message
+            formAlert.classList.remove('hidden');
+            contactForm.reset();
+
+            // Auto hide after 5 seconds
+            setTimeout(() => {
+                formAlert.classList.add('hidden');
+            }, 5000);
+        });
+    </script>u
+</body>
+</html>
